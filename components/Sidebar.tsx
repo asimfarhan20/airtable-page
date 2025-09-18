@@ -1,12 +1,16 @@
 import {
+  Book,
   Calendar,
   ChevronDown,
+  ChevronUp,
   Home,
+  Import,
   Inbox,
   ScreenShare,
   Search,
   Settings,
   Star,
+  User2,
   Users,
   UsersRound,
 } from "lucide-react";
@@ -16,6 +20,7 @@ import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -62,13 +67,32 @@ const below = [
   },
 ];
 
+const footer = [
+  {
+    title: "Templates",
+    url: "#",
+    icon: Book,
+  },
+  {
+    title: "Marketing",
+    url: "#",
+    icon: Inbox,
+  },
+  {
+    title: "Import",
+    url: "#",
+    icon: Import,
+  },
+  
+]
+
 export function AppSidebar() {
   return (
-    <Sidebar className="max-w-60 border-r font-sans fixed top-0 left-0 h-screen z-50">
+    <Sidebar className="max-w-60 border-r font-sans overflow-hidden bg-white">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent className="pt-2 md:pt-18 text-lg font-semibold">
-            <Image src="/Airtable_Logo.png" width={100} height={100} alt="Logo" className="m-3 md:hidden" />
+            <Image src="/Airtable_Logo.png" width={100} height={100} alt="Logo" className="m-3 md:hidden pb-3" />
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
@@ -136,7 +160,26 @@ export function AppSidebar() {
         </CollapsibleContent>
       </SidebarGroup>
     </Collapsible>
+    <SidebarGroup className="mt-auto border-t ">
+          <SidebarGroupContent className="pt-2 md:pt-18 text-lg font-semibold ">
+            <SidebarMenu>
+              {footer.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+    
       </SidebarContent>
+      
+      
     </Sidebar>
   );
 }

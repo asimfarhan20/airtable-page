@@ -68,7 +68,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent className="pt-2 md:pt-18 text-lg font-semibold">
-            <Image src="/Airtable_Logo.png" width={100} height={100} alt="Logo" className="m-3" />
+            <Image src="/Airtable_Logo.png" width={100} height={100} alt="Logo" className="m-3 md:hidden" />
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
